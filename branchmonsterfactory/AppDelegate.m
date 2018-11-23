@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MonsterPreferences.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "Branch/Branch.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +25,12 @@
     UIViewController *nextVC;
     
     NSDictionary *params = @{}; // remove after adding Branch
+ 
+    // listener for Branch Deep Link data
+    [[Branch getInstance] initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandler:^(NSDictionary * _Nonnull params, NSError * _Nullable error) {
+        // do stuff with deep link data (nav to page, display content, etc)
+        NSLog(@"%@", params);
+    }];
     
     // If the key 'monster' is present in the deep link dictionary
     // then load the monster viewer with the appropriate monster parameters
@@ -65,6 +72,22 @@
     BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    [[Branch getInstance] application:app openURL:url options:options];
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
+    // handler for Universal Links
+    [[Branch getInstance] continueUserActivity:userActivity];
+    return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // handler for Push Notifications
+    [[Branch getInstance] handlePushNotification:userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
