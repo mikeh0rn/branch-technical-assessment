@@ -78,35 +78,21 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [self.view addSubview:self.progressBar];
     
     // #8 TODO: track that the user viewed the monster view page
-    // Content Reference
     [[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
-    BranchUniversalObject *buo = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:@"content/12345"];
+    BranchUniversalObject *buo = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:@"Monster View Page"];
     buo.title = @"Monster View Page";
-    buo.contentDescription = @"Track user viewed monster view page";
+    buo.contentDescription = @"Tracking - user viewed monster view page";
     buo.publiclyIndex = YES;
     buo.locallyIndex = YES;
     buo.contentMetadata.customMetadata[@"key1"] = @"value1";
     
-    // Link Reference
     BranchLinkProperties *lp = [[BranchLinkProperties alloc] init];
-
     lp.channel = @"sharing";
-
-    [lp addControlParam:@"$ios_url" withValue: @"http://example.com/ios"];
-
-    [lp addControlParam:@"$match_duration" withValue: @"2000"];
-    
-    [lp addControlParam:@"custom_data" withValue: @"yes"];
-    [lp addControlParam:@"look_at" withValue: @"this"];
-
-    NSString *UUID = [[NSUUID UUID] UUIDString];
-    // login
-    [[Branch getInstance] setIdentity:UUID];
-    
-    // set custom event
-    [[BranchEvent customEventWithName:@"monster_edit" contentItem:buo] logEvent];
-    // logout
+    [lp addControlParam:@"$ios_url" withValue: @"https://itunes.apple.com/us/app/branch-monster-factory/id917737838?mt=8"];
+    [[Branch getInstance] setIdentity:@"monster_view"];
+    [[BranchEvent customEventWithName:@"monster_view" contentItem:buo] logEvent];
     [[Branch getInstance] logout];
+    
     // #9 TODO: load a URL just for display on the viewer page
     [buo getShortUrlWithLinkProperties:lp andCallback:^(NSString* url, NSError* error) {
         if (!error) {
