@@ -85,6 +85,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     buo.publiclyIndex = YES;
     buo.locallyIndex = YES;
     buo.contentMetadata.customMetadata[@"key1"] = @"value1";
+  
     
     BranchLinkProperties *lp = [[BranchLinkProperties alloc] init];
     lp.channel = @"sharing";
@@ -94,12 +95,15 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [[Branch getInstance] logout];
     
     // #9 TODO: load a URL just for display on the viewer page
-    [buo getShortUrlWithLinkProperties:lp andCallback:^(NSString* url, NSError* error) {
-        if (!error) {
-            self.urlTextView.text = url;
-            [self.progressBar hide];
-        }
-    }];
+    [[Branch getInstance] getShortURLWithParams:[self prepareBranchDict]
+                                     andChannel:@"sharing"
+                                     andFeature:@"sharing"
+                                    andCallback:^(NSString *url, NSError *err) {
+                                        if (!err) {
+                                            self.urlTextView.text = url;
+                                            [self.progressBar hide];
+                                        }
+                                    }];   
     
 }
 
