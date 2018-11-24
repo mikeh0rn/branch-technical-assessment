@@ -95,6 +95,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [[Branch getInstance] logout];
     
     // #9 TODO: load a URL just for display on the viewer page
+    
     [[Branch getInstance] getShortURLWithParams:[self prepareBranchDict]
                                      andChannel:@"sharing"
                                      andFeature:@"sharing"
@@ -103,7 +104,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
                                             self.urlTextView.text = url;
                                             [self.progressBar hide];
                                         }
-                                    }];   
+                                    }];
     
 }
 
@@ -205,11 +206,20 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
         // Create Branch link as soon as the user clicks
         // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
         // Specify the channel to be 'sms' for tracking on the Branch dashboard
-        [self.progressBar hide];
+        [[Branch getInstance] getShortURLWithParams:[self prepareBranchDict]
+                                         andChannel:@"sms"
+                                         andFeature:@"sharing"
+                                        andCallback:^(NSString *url, NSError *err) {
+                                            [self.progressBar hide];
+                                            if (!err) {
+                                                smsViewController.body = [NSString stringWithFormat:@"Look at this sick monster I made - %@ at %@", self.monsterName, url];
+                                                [self presentViewController:smsViewController animated:YES completion:nil];
+                                                
+                                            }
+                                        }];
+    
         
-        NSString *url = @"http://example.com"; // TODO: Remove when Branch is added
-        smsViewController.body = [NSString stringWithFormat:@"Check out my Branchster named %@ at %@", self.monsterName, url];
-        [self presentViewController:smsViewController animated:YES completion:nil];
+    
     } else {
         UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Message Support" message:@"This device does not support messaging" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert_Dialog show];
