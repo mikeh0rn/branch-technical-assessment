@@ -10,6 +10,7 @@
 #import "MonsterViewerViewController.h"
 #import "MonsterPartsFactory.h"
 #import "MonsterPreferences.h"
+#import "Branch.h"
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
@@ -77,10 +78,36 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [self.view addSubview:self.progressBar];
     
     // #8 TODO: track that the user viewed the monster view page
+    // Content Reference
+    [[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
+    BranchUniversalObject *buo = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:@"content/12345"];
+    buo.title = @"Monster View Page";
+    buo.contentDescription = @"Track user viewed monster view page";
+    buo.publiclyIndex = YES;
+    buo.locallyIndex = YES;
+    buo.contentMetadata.customMetadata[@"key1"] = @"value1";
+    
+    // Link Reference
+    BranchLinkProperties *lp = [[BranchLinkProperties alloc] init];
+
+    lp.channel = @"sharing";
+
+    [lp addControlParam:@"$ios_url" withValue: @"http://example.com/ios"];
+
+    [lp addControlParam:@"$match_duration" withValue: @"2000"];
+    
+    [lp addControlParam:@"custom_data" withValue: @"yes"];
+    [lp addControlParam:@"look_at" withValue: @"this"];
+
     
     // #9 TODO: load a URL just for display on the viewer page
-    self.urlTextView.text = @"";
-    [self.progressBar hide];
+    [buo getShortUrlWithLinkProperties:lp andCallback:^(NSString* url, NSError* error) {
+        if (!error) {
+            self.urlTextView.text = url;
+            [self.progressBar hide];
+        }
+    }];
+    
 }
 
 - (IBAction)cmdChangeClick:(id)sender {
