@@ -99,7 +99,14 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [lp addControlParam:@"custom_data" withValue: @"yes"];
     [lp addControlParam:@"look_at" withValue: @"this"];
 
+    NSString *UUID = [[NSUUID UUID] UUIDString];
+    // login
+    [[Branch getInstance] setIdentity:UUID];
     
+    // set custom event
+    [[BranchEvent customEventWithName:@"monster_edit" contentItem:buo] logEvent];
+    // logout
+    [[Branch getInstance] logout];
     // #9 TODO: load a URL just for display on the viewer page
     [buo getShortUrlWithLinkProperties:lp andCallback:^(NSString* url, NSError* error) {
         if (!error) {
