@@ -85,7 +85,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     buo.publiclyIndex = YES;
     buo.locallyIndex = YES;
     buo.contentMetadata.customMetadata[@"key1"] = @"value1";
-  
+    
     
     BranchLinkProperties *lp = [[BranchLinkProperties alloc] init];
     lp.channel = @"sharing";
@@ -136,23 +136,23 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 // a user clicked the link and was deep linked
 - (NSDictionary *)prepareBranchDict {
     return [[NSDictionary alloc] initWithObjects:@[
-                                                  [NSNumber numberWithInteger:[MonsterPreferences getColorIndex]],
-                                                  [NSNumber numberWithInteger:[MonsterPreferences getBodyIndex]],
-                                                  [NSNumber numberWithInteger:[MonsterPreferences getFaceIndex]],
-                                                  self.monsterName,
-                                                  @"true",
-                                                  [NSString stringWithFormat:@"My Branchster: %@", self.monsterName],
-                                                  self.monsterDescription,
-                                                  [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[MonsterPreferences getColorIndex], (short)[MonsterPreferences getBodyIndex], (short)[MonsterPreferences getFaceIndex]]]
-                                        forKeys:@[
-                                                  @"color_index",
-                                                  @"body_index",
-                                                  @"face_index",
-                                                  @"monster_name",
-                                                  @"monster",
-                                                  @"$og_title",
-                                                  @"$og_description",
-                                                  @"$og_image_url"]];
+                                                   [NSNumber numberWithInteger:[MonsterPreferences getColorIndex]],
+                                                   [NSNumber numberWithInteger:[MonsterPreferences getBodyIndex]],
+                                                   [NSNumber numberWithInteger:[MonsterPreferences getFaceIndex]],
+                                                   self.monsterName,
+                                                   @"true",
+                                                   [NSString stringWithFormat:@"My Branchster: %@", self.monsterName],
+                                                   self.monsterDescription,
+                                                   [NSString stringWithFormat:@"https://s3-us-west-1.amazonaws.com/branchmonsterfactory/%hd%hd%hd.png", (short)[MonsterPreferences getColorIndex], (short)[MonsterPreferences getBodyIndex], (short)[MonsterPreferences getFaceIndex]]]
+                                         forKeys:@[
+                                                   @"color_index",
+                                                   @"body_index",
+                                                   @"face_index",
+                                                   @"monster_name",
+                                                   @"monster",
+                                                   @"$og_title",
+                                                   @"$og_description",
+                                                   @"$og_image_url"]];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -165,7 +165,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     [self.botLayerThreeFace setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.txtDescription setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.cmdChange setTranslatesAutoresizingMaskIntoConstraints:NO];
-
+    
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     CGFloat widthRatio = self.botLayerOneColor.frame.size.width/self.botLayerOneColor.frame.size.height;
     CGFloat newHeight = screenSize.size.height;
@@ -217,15 +217,13 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
                                                 
                                             }
                                         }];
-    
         
-    
     } else {
         UIAlertView *alert_Dialog = [[UIAlertView alloc] initWithTitle:@"No Message Support" message:@"This device does not support messaging" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert_Dialog show];
         alert_Dialog = nil;
     }
-
+    
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller
@@ -233,7 +231,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     if (MessageComposeResultSent == result) {
         
         // track successful share event via sms
-//        [[Branch getInstance] userCompletedAction:@"share_sms_success"];
+        //        [[Branch getInstance] userCompletedAction:@"share_sms_success"];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
