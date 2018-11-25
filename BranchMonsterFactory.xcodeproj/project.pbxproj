@@ -407,7 +407,7 @@
 				TargetAttributes = {
 					670591E819BBAC630039DAE1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = YZQGZ8X5NG;
+						DevelopmentTeam = 7DZN9LHP9T;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
 								enabled = 1;
@@ -657,6 +657,7 @@
 				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactory/Branchsters.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7DZN9LHP9T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BranchMonsterFactory",
@@ -679,6 +680,7 @@
 				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactory/Branchsters.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7DZN9LHP9T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BranchMonsterFactory",

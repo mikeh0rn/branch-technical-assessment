@@ -212,7 +212,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
                                         andCallback:^(NSString *url, NSError *err) {
                                             [self.progressBar hide];
                                             if (!err) {
-                                                smsViewController.body = [NSString stringWithFormat:@"Look at this sick monster I made - %@ at %@", self.monsterName, url];
+                                                smsViewController.body = [NSString stringWithFormat:@"Look at this cool monster I made - %@ at %@", self.monsterName, url];
                                                 [self presentViewController:smsViewController animated:YES completion:nil];
                                                 
                                             }
