@@ -89,7 +89,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     
     BranchLinkProperties *lp = [[BranchLinkProperties alloc] init];
     lp.channel = @"sharing";
-    [lp addControlParam:@"$ios_url" withValue: @"https://itunes.apple.com/us/app/branch-monster-factory/id917737838?mt=8"];
+//    [lp addControlParam:@"$ios_url" withValue: @"https://itunes.apple.com/us/app/branch-monster-factory/id917737838?mt=8"];
     [[Branch getInstance] setIdentity:@"monster_view"];
     [[BranchEvent customEventWithName:@"monster_view" contentItem:buo] logEvent];
     [[Branch getInstance] logout];
