@@ -407,7 +407,7 @@
 				TargetAttributes = {
 					670591E819BBAC630039DAE1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 7DZN9LHP9T;
+						DevelopmentTeam = V8RHQ7L5JP;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
 								enabled = 1;
@@ -657,7 +657,8 @@
 				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactory/Branchsters.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7DZN9LHP9T;
+				DEVELOPMENT_TEAM = V8RHQ7L5JP;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BranchMonsterFactory",
@@ -665,6 +666,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.branchmetrics.BranchstersMikeHorn;
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -680,7 +682,8 @@
 				CODE_SIGN_ENTITLEMENTS = BranchMonsterFactory/Branchsters.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7DZN9LHP9T;
+				DEVELOPMENT_TEAM = V8RHQ7L5JP;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BranchMonsterFactory",
@@ -688,6 +691,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BranchMonsterFactory/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.branchmetrics.BranchstersMikeHorn;
 				PRODUCT_NAME = Branchsters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
