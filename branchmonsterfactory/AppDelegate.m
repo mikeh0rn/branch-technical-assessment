@@ -24,45 +24,31 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
    
     [[Branch getInstance] initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandler:^(NSDictionary * _Nonnull params, NSError * _Nullable error) {
-        // do stuff with deep link data (nav to page, display content, etc)
+
         NSLog(@"%@", params);
         UIViewController *nextVC;
-        // If the key 'monster' is present in the deep link dictionary
-        // then load the monster viewer with the appropriate monster parameters
+
         if ([params objectForKey:@"monster"]) {
             [MonsterPreferences setMonsterName:[params objectForKey:@"monster_name"]];
             [MonsterPreferences setFaceIndex:[[params objectForKey:@"face_index"] intValue]];
             [MonsterPreferences setBodyIndex:[[params objectForKey:@"body_index"] intValue]];
             [MonsterPreferences setColorIndex:[[params objectForKey:@"color_index"] intValue]];
-            
-            // Choose the monster viewer as the next view controller
+
             nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
-            
-            
-            // Else, the app is being opened up from the home screen or from the app store
-            // Load the next logical view controller
+
         } else {
-            
-            // If a name has been saved in preferences, then this user has already created a monster
-            // Load the viewer
+
             if (![MonsterPreferences getMonsterName]) {
                 [MonsterPreferences setMonsterName:@""];
                 
-                // Choose the monster viewer as the next view controller
                 nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterCreatorViewController"];
-                
-                // If no name has been saved, this user is new, so load the monster maker screen
+
             } else {
                 nextVC = [storyboard instantiateViewControllerWithIdentifier:@"MonsterViewerViewController"];
             }
         }
-        // launch the next view controller
         [navController setViewControllers:@[nextVC] animated:YES];
     }];
-    
-
-    
-    
     
     return YES;
 }
