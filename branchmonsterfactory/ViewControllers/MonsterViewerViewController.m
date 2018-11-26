@@ -79,21 +79,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     
     // #8 TODO: track that the user viewed the monster view page
     [[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
-    BranchUniversalObject *buo = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:@"Monster View Page"];
-    buo.title = @"Monster View Page";
-    buo.contentDescription = @"Tracking - user viewed monster view page";
-    buo.publiclyIndex = YES;
-    buo.locallyIndex = YES;
-    buo.contentMetadata.customMetadata[@"key1"] = @"value1";
-    
-    
-    BranchLinkProperties *lp = [[BranchLinkProperties alloc] init];
-    lp.channel = @"sharing";
-//    [lp addControlParam:@"$ios_url" withValue: @"https://itunes.apple.com/us/app/branch-monster-factory/id917737838?mt=8"];
-    [[Branch getInstance] setIdentity:@"monster_view"];
-    [[BranchEvent customEventWithName:@"monster_view" contentItem:buo] logEvent];
-    [[Branch getInstance] logout];
-    
+
     // #9 TODO: load a URL just for display on the viewer page
     
     [[Branch getInstance] getShortURLWithParams:[self prepareBranchDict]
@@ -203,9 +189,6 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
         MFMessageComposeViewController *smsViewController = [[MFMessageComposeViewController alloc] init];
         smsViewController.messageComposeDelegate = self;
         
-        // Create Branch link as soon as the user clicks
-        // Pass in the special Branch dictionary of keys/values you want to receive in the AppDelegate on initSession
-        // Specify the channel to be 'sms' for tracking on the Branch dashboard
         [[Branch getInstance] getShortURLWithParams:[self prepareBranchDict]
                                          andChannel:@"sms"
                                          andFeature:@"sharing"
