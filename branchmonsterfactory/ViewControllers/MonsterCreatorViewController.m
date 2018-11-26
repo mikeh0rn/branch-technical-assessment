@@ -70,17 +70,8 @@ static CGFloat SIDE_SPACE = 7.0;
     toolbar.items = [NSArray arrayWithObject:barButton];
     
     // TODO: track that the user viewed the monster edit page
-    [[Branch getInstance] userCompletedAction:@"monster_edit"];
-    BranchUniversalObject *buo = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:@"Monster Edit Page"];
-    buo.title = @"Monster Edit Page";
-    buo.contentDescription = @"Tracking - user viewed the monster edit page";
-    buo.publiclyIndex = YES;
-    buo.locallyIndex = YES;
-    buo.contentMetadata.customMetadata[@"key1"] = @"value1";
 
-    [[Branch getInstance] setIdentity:@"monster_edit"];
-    [[BranchEvent customEventWithName:@"monster_edit" contentItem:buo] logEvent];
-    [[Branch getInstance] logout];
+    [[Branch getInstance] userCompletedAction:@"monster_edit"];
 
     self.etxtName.inputAccessoryView = toolbar;
     [self.etxtName addTarget:self.etxtName
