@@ -76,12 +76,9 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
     self.progressBar = [[NetworkProgressBar alloc] initWithFrame:self.view.frame andMessage:@"preparing your Branchster.."];
     [self.progressBar show];
     [self.view addSubview:self.progressBar];
-    
-    // #8 TODO: track that the user viewed the monster view page
+
     [[Branch getInstance] userCompletedAction:@"monster_view" withState:self.monsterMetadata];
 
-    // #9 TODO: load a URL just for display on the viewer page
-    
     [[Branch getInstance] getShortURLWithParams:[self prepareBranchDict]
                                      andChannel:@"sharing"
                                      andFeature:@"sharing"
@@ -180,8 +177,7 @@ static CGFloat MONSTER_HEIGHT_FIVE = 0.55f;
 }
 
 - (IBAction)cmdMessageClick:(id)sender {
-    // track that the user clicked the share via sms button and pass in the monster meta data
-    
+
     if([MFMessageComposeViewController canSendText]){
         [self.progressBar changeMessageTo:@"preparing message.."];
         [self.progressBar show];

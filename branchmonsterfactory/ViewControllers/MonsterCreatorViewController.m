@@ -69,8 +69,6 @@ static CGFloat SIDE_SPACE = 7.0;
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     toolbar.items = [NSArray arrayWithObject:barButton];
     
-    // TODO: track that the user viewed the monster edit page
-
     [[Branch getInstance] userCompletedAction:@"monster_edit"];
 
     self.etxtName.inputAccessoryView = toolbar;
