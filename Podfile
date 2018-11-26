@@ -4,7 +4,6 @@
 platform :ios, '8.0'
 
 target 'BranchMonsterFactory' do
-  # if swift
   use_frameworks!
 
   pod 'Branch'

@@ -22,11 +22,7 @@
     UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
     NSString * storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-    
-    
-    NSDictionary *params = @{}; // remove after adding Branch
- 
-    // listener for Branch Deep Link data
+   
     [[Branch getInstance] initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandler:^(NSDictionary * _Nonnull params, NSError * _Nullable error) {
         // do stuff with deep link data (nav to page, display content, etc)
         NSLog(@"%@", params);
